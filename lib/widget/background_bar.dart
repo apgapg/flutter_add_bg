@@ -31,8 +31,9 @@ class _BackgroundBarState extends State<BackgroundBar> {
     super.initState();
     BackgroundModel _model = BackgroundModel.fromJson(json.decode(_json));
     this._list = new List();
-    this._list.addAll(_model.list);
     this._list.add("asset");
+
+    this._list.addAll(_model.list);
   }
 
   @override

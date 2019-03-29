@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
 }
 
 double toolsize = 44.0;
-Color toolBackgroundColor = Colors.grey[300];
+Color toolBackgroundColor = Color(0xFFF5F6F8);
 
 class HomePage extends StatefulWidget {
   @override
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
 
   var _height = 0.0;
 
-  String _text = "The trouble is you think you have time.";
+  String _text = "This is a sample text. Tap to edit it.";
 
   double _screenWidth;
 
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
   var _fontList = ['sans-serif', 'Nunito', 'Patrick', 'Roboto', 'Cabin'];
   var _tint;
 
-  var _mainKey = GlobalKey();
+  final _mainKey = GlobalKey();
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -93,15 +93,19 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
     _screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Colors.blueGrey[200],
       appBar: AppBar(
         backgroundColor: toolBackgroundColor,
-        title: Text(
+        title: Image.asset(
+          'assets/images/logo.png',
+          height: 40.0,
+          width: 40.0,
+          /*title: Text(
           "bgEditor",
           style: TextStyle(
             color: Colors.blueGrey[900].withOpacity(0.9),
             fontWeight: FontWeight.w700,
-          ),
+          ),*/
         ),
         actions: <Widget>[
           FlatButton(
@@ -135,7 +139,6 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
                               image: _backgroundImage == null
                                   ? CachedNetworkImageProvider(
                                 _backgroundUrl,
-
                               )
                                   : FileImage(_backgroundImage),
                               fit: BoxFit.fill),
@@ -156,20 +159,24 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
                           ),
                         ),
                       ),
-                      Container(
-                        key: _key,
-                        padding: EdgeInsets.all(16.0),
-                        child: GestureDetector(
+                      Material(
+                        color: Colors.transparent,
+                        child: InkWell(
                           onTap: _onTextTap,
-                          child: Text(
-                            _text,
-                            textAlign: _textAlign,
-                            style: TextStyle(
-                              fontSize: _textSize,
-                              fontWeight: _bold ? FontWeight.w700 : FontWeight.w500,
-                              color: Colors.white.withOpacity(0.9),
-                              fontFamily: _fontFamily,
-                              height: _lineSpacing,
+                          child: Container(
+                            key: _key,
+                            padding: EdgeInsets.all(16.0),
+                            child: Text(
+
+                              _text,
+                              textAlign: _textAlign,
+                              style: TextStyle(
+                                fontSize: _textSize,
+                                fontWeight: _bold ? FontWeight.w700 : FontWeight.w500,
+                                color: Colors.white.withOpacity(0.9),
+                                fontFamily: _fontFamily,
+                                height: _lineSpacing,
+                              ),
                             ),
                           ),
                         ),
@@ -200,6 +207,7 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.grey[300],
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -328,6 +336,7 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
   }
 
   void onBackgroundToolTap(String url) {
+    _backgroundImage = null;
     setState(() {
       _backgroundUrl = url;
     });
