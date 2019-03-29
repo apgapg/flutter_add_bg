@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_add_bg/main.dart';
+import 'package:flutter_add_bg/utils/design_utils.dart';
 
 class ComposePage extends StatefulWidget {
   final String text;

@@ -58,17 +58,30 @@ class _BackgroundBarState extends State<BackgroundBar> {
                     ? CachedNetworkImage(
                         imageUrl: _list[index].url,
                         fit: BoxFit.cover,
-                        placeholder: Container(
-                          height: 24.0,
-                          width: 24.0,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 1.0,
-                          ),
+                  placeholder: (context, url) =>
+                      Container(
+                        height: 24.0,
+                        width: 24.0,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 1.0,
                         ),
+                      ),
                       )
-                    : Icon(
-                        Icons.image,
-                        size: 28.0,
+                    : Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Icon(
+                      Icons.image,
+                      size: 20.0,
+                    ),
+                    SizedBox(
+                      height: 2.0,
+                    ),
+                    Text(
+                      "GALLERY",
+                      style: TextStyle(fontSize: 12.0),
+                    )
+                  ],
                       ),
               ),
               onTap: () {
