@@ -44,6 +44,9 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
     Colors.red[900],
     Colors.green[900],
     Colors.purple[900],
+    Colors.yellow[900],
+    Colors.cyan[900],
+    Colors.brown[900],
   ];
   var _fontList = ['sans-serif', 'Nunito', 'Patrick', 'Roboto', 'Cabin'];
   var _tint;
@@ -54,11 +57,9 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
 
   var _heightFactor = 0.7;
 
-  bool _showBackgroundBar = false;
-
   String _backgroundUrl = 'https://www.gstatic.com/webp/gallery/1.jpg';
 
-  double _blur = 0.0;
+  double _blur = 2.0;
 
   File _backgroundImage;
 
@@ -75,21 +76,34 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        /*title: Image.asset(
-          'assets/images/logo1.png',
-          height: 40.0,
-          width: 40.0,
-        ),*/
-        title: Text("Bg Editor"),
+        title: Row(
+          children: <Widget>[
+            Image.asset(
+              'assets/images/logo1.png',
+              height: 40.0,
+              width: 40.0,
+            ),
+            SizedBox(width: 8,),
+            Text("Background Editor")
+          ],
+        ),
+        elevation: 4.0,
+        // title: Text("Bg Editor"),
         actions: <Widget>[
           FlatButton(
             onPressed: _onSaveTap,
-            child: Text(
-              "SAVE",
-              style: TextStyle(
-                color: Colors.white.withOpacity(0.9),
-                fontWeight: FontWeight.w900,
-              ),
+            child: Row(
+              children: <Widget>[
+                Icon(Icons.save, color: Colors.white.withOpacity(0.9),),
+                SizedBox(width: 8.0,),
+                Text(
+                  "SAVE",
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.9),
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -159,7 +173,7 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
                         alignment: Alignment.bottomRight,
                         padding: EdgeInsets.all(4.0),
                         child: Opacity(
-                          opacity: 0.7,
+                          opacity: 0.8,
                           child: Image.asset(
                             'assets/images/logo1.png',
                             height: 28.0,
@@ -176,37 +190,39 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+        elevation: 4.0,
         color: toolBackgroundColor,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Container(
-              height: 2.0,
+              height: 1.0,
               width: double.infinity,
-              color: Theme.of(context).primaryColor.withOpacity(0.7),
+              color: Colors.grey.withOpacity(0.5),
             ),
             BackgroundBar(onBackgroundToolTap, onBackgroundToolFromGalleryTap),
             Container(
-              height: 2.0,
+              height: 1.0,
               width: double.infinity,
-              color: Theme.of(context).primaryColor.withOpacity(0.7),
+              color: Colors.grey.withOpacity(0.7),
             ),
             Container(
               color: toolBackgroundColor,
               height: 44.0,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.symmetric(horizontal: 4.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Tool(Icons.format_bold, onBoldToolTap, isBold()),
-                    Tool(Icons.format_size, onSizeToolTap, false),
-                    Tool(Icons.font_download, onFontToolTap, false),
-                    Tool(Icons.format_align_left, onAlignToolTap, false),
-                    Tool(Icons.format_line_spacing, onLineSpacingToolTap, isLineSpacing()),
-                    Tool(Icons.blur_on, onBlurToolTap, isBlur()),
-                    Tool(Icons.aspect_ratio, onOrientationToolTap, false),
-                    Tool(Icons.gradient, onTintToolTap, false),
+                    Tool(Icons.format_bold, onBoldToolTap, isBold(), "Bold"),
+                    Tool(Icons.format_size, onSizeToolTap, false, "Font Size"),
+                    Tool(Icons.font_download, onFontToolTap, false, "Font Family"),
+                    Tool(Icons.format_align_left, onAlignToolTap, false, "Text Align"),
+                    Tool(Icons.format_line_spacing, onLineSpacingToolTap, isLineSpacing(), "Line Spacing"),
+                    Tool(Icons.blur_on, onBlurToolTap, isBlur(), "Background Blur"),
+                    Tool(Icons.aspect_ratio, onOrientationToolTap, false, "Resize Background"),
+                    Tool(Icons.gradient, onTintToolTap, false, "Tint"),
                   ],
                 ),
               ),

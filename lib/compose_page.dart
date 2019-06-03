@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_add_bg/utils/design_utils.dart';
 
 class ComposePage extends StatefulWidget {
   final String text;
@@ -23,13 +22,8 @@ class _ComposePageState extends State<ComposePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: toolBackgroundColor,
         title: Text(
           "Edit Text",
-          style: TextStyle(
-            color: Colors.blueGrey[900].withOpacity(0.9),
-            fontWeight: FontWeight.w700,
-          ),
         ),
         actions: <Widget>[
           FlatButton(
@@ -37,8 +31,8 @@ class _ComposePageState extends State<ComposePage> {
             child: Text(
               "DONE",
               style: TextStyle(
-                color: Colors.blueGrey[900].withOpacity(0.9),
-                fontWeight: FontWeight.w700,
+                color: Colors.white,
+                fontWeight: FontWeight.w900,
               ),
             ),
           ),
