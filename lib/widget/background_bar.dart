@@ -22,7 +22,7 @@ class BackgroundBar extends StatefulWidget {
 
 class _BackgroundBarState extends State<BackgroundBar> {
   final _json =
-      '[{"url":"https://ayushpgupta.site/bg/images/b1.png"},{"url":"https://ayushpgupta.site/bg/images/b2.png"},{"url":"https://ayushpgupta.site/bg/images/b3.jpg"},{"url":"https://ayushpgupta.site/bg/images/b4.jpeg"},{"url":"https://ayushpgupta.site/bg/images/b5.jpg"},{"url":"https://ayushpgupta.site/bg/images/b6.jpg"},{"url":"https://ayushpgupta.site/bg/images/b7.jpg"}]';
+      '[{"url":"https://firebasestorage.googleapis.com/v0/b/connect-it-6bc24.appspot.com/o/extras%2Fpexels-photo-1054289.jpeg?alt=media&token=1b997ad5-f4b8-4e63-bdc6-99a5b108effa"},{"url":"https://firebasestorage.googleapis.com/v0/b/connect-it-6bc24.appspot.com/o/extras%2Fpexels-photo-4173624.jpeg?alt=media&token=81f3df80-2d91-4668-9486-f40338217f61"},{"url":"https://firebasestorage.googleapis.com/v0/b/connect-it-6bc24.appspot.com/o/extras%2FBG2_Desktop_1280x720.jpg?alt=media&token=3b374a79-5a36-49a5-ba07-5e41d5bc6de9"},{"url":"https://firebasestorage.googleapis.com/v0/b/connect-it-6bc24.appspot.com/o/extras%2Fmilky-way-2695569_960_720.jpg?alt=media&token=9de95687-3061-4038-b16c-0fc6eccda0ff"}]';
 
   List _list;
 
@@ -58,34 +58,35 @@ class _BackgroundBarState extends State<BackgroundBar> {
                     ? CachedNetworkImage(
                         imageUrl: _list[index].url,
                         fit: BoxFit.cover,
-                  placeholder: (context, url) =>
-                      Container(
-                        height: 24.0,
-                        width: 24.0,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 1.0,
+                        placeholder: (context, url) => Container(
+                          height: 24.0,
+                          width: 24.0,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 1.0,
+                          ),
                         ),
-                      ),
                       )
                     : Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Icon(
-                      Icons.image,
-                      size: 20.0,
-                    ),
-                    SizedBox(
-                      height: 2.0,
-                    ),
-                    Text(
-                      "GALLERY",
-                      style: TextStyle(fontSize: 12.0),
-                    )
-                  ],
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(
+                            Icons.image,
+                            size: 20.0,
+                          ),
+                          SizedBox(
+                            height: 2.0,
+                          ),
+                          Text(
+                            "GALLERY",
+                            style: TextStyle(fontSize: 12.0),
+                          )
+                        ],
                       ),
               ),
               onTap: () {
-                _list[index] is BackgroundItem ? widget.onTap(_list[index].url) : getImage();
+                _list[index] is BackgroundItem
+                    ? widget.onTap(_list[index].url)
+                    : getImage();
               },
             ),
           );
