@@ -1,16 +1,7 @@
 # flutter_add_bg
 
-A new Flutter project.
+<img src="https://raw.githubusercontent.com/apgapg/flutter_add_bg/master/assets/images/logo1.png"  alt="flutter_add_bg">
 
-## Getting Started
+A Flutter app to write text on images similar to [yourquote.in](https://www.yourquote.in/).
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+<img src="https://raw.githubusercontent.com/apgapg/flutter_add_bg/master/res/s1.png" height="500">
